@@ -74,23 +74,24 @@ th, td {
   border-right: 1px solid #e2e8f0;
   border-bottom: 1px solid #e2e8f0;
   text-align: center;
-  padding: 12px 8px;
-  font-size: 14px;
+  padding: 8px 4px;
+  width: 80px;      /* Increased base width */
+  min-width: 80px;  /* Stops "नवीन" and "विक्री" from squashing */
 }
 
 /* --- THE STICKY COLUMN SECRET --- */
 /* Keeps the Item Name fixed while you scroll right */
+/* Item Name Column (Sticky) */
 .sticky-col {
   position: sticky;
   left: 0;
-  background-color: #ffffff !important;
-  z-index: 20; /* Higher than headers */
-  width: 180px; /* Slightly wider for longer names */
+  background: #ffffff !important;
+  z-index: 20;
+  width: 140px;      /* Fixed width for item name */
+  min-width: 140px;
   font-weight: bold;
-  border-right: 3px solid #cbd5e0 !important;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  border-right: 3px solid #2d3748 !important;
 }
-
 /* Ensure the top-left corner header stays above everything */
 thead th.sticky-col {
   z-index: 30;
@@ -99,22 +100,20 @@ thead th.sticky-col {
 }
 
 /* --- HEADERS --- */
+/* Update the Date Header width to match (5 sub-columns * 75px) */
 .date-header {
   background: #2d3748;
   color: white;
-  position: sticky;
-  top: 0; /* Keeps date row at the top while scrolling down */
-  z-index: 10;
+  width: 375px; /* Changed from 300px to 375px */
 }
 
+/* Make sure the text inside sub-headers doesn't wrap awkwardly */
 .sub {
   background: #edf2f7;
   color: #4a5568;
-  font-size: 11px;
+  font-size: 10px; /* Slightly smaller text for long words like 'सुरवात' */
   text-transform: uppercase;
-  position: sticky;
-  top: 40px; /* Adjust based on your header height */
-  z-index: 10;
+  white-space: nowrap; /* Prevents text from breaking into two lines */
 }
 
 /* --- TABLE INPUTS --- */
