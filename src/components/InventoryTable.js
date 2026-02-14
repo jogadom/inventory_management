@@ -45,7 +45,7 @@ const InventoryTable = ({ items, viewDate, updateCell }) => {
       <table>
         <thead>
           <tr>
-            <th rowSpan="2" className="sticky-col main-header">Item Name</th>
+            <th rowSpan="2" className="sticky-col ">Item Name</th>
             {daysArray.map(day => {
               const isToday = isViewingCurrentMonth && day === currentDay;
               const displayDate = `${String(day).padStart(2, '0')}-${String(month).padStart(2, '0')}-${year}`;

@@ -39,7 +39,7 @@ const AnalyticsReport = ({ items, viewDate }) => {
     <div className="expert-report">
       <div className="report-header-rich">
         <h2>📊 Business Performance Analysis</h2>
-        <p>Expert overview for <strong>Kantilal And Sons</strong> | Period: {viewDate}</p>
+        <p>Expert overview| Period: {viewDate}</p>
       </div>
 
       {/* 3. Multi-Bar Comparison Chart */}

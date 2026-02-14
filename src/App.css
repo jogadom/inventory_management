@@ -50,48 +50,61 @@ button {
 button[type="submit"] { background: #38a169; color: white; }
 button[type="submit"]:hover { background: #2f855a; }
 
-/* Table Core */
+/* --- UPDATED TABLE CORE (PC & MOBILE READY) --- */
 .table-container {
+  width: 100%;
+  max-height: 75vh;
+  overflow-x: auto; /* Required for horizontal swipe on mobile */
+  overflow-y: auto; /* Required for vertical scroll */
   background: white;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  overflow: auto;
-  max-height: 75vh;
-  scroll-behavior: smooth;
+  margin-top: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
-  border-collapse: separate;
+  border-collapse: separate; /* Required for sticky header/col to work */
   border-spacing: 0;
-  table-layout: fixed;
-  width: max-content; /* Critical for horizontal scroll */
+  width: 100%; 
+  min-width: 900px; /* Forces horizontal scroll on mobile so data isn't squashed */
 }
 
 th, td {
   border-right: 1px solid #e2e8f0;
   border-bottom: 1px solid #e2e8f0;
   text-align: center;
-  padding: 10px 5px;
-  width: 60px; /* Fixed width for consistency */
+  padding: 12px 8px;
+  font-size: 14px;
 }
 
-/* Item Name Column (Sticky) */
+/* --- THE STICKY COLUMN SECRET --- */
+/* Keeps the Item Name fixed while you scroll right */
 .sticky-col {
   position: sticky;
   left: 0;
-  background: #ffffff !important;
-  z-index: 10;
-  width: 160px;
+  background-color: #ffffff !important;
+  z-index: 20; /* Higher than headers */
+  width: 180px; /* Slightly wider for longer names */
   font-weight: bold;
-  border-right: 3px solid #2d3748 !important;
+  border-right: 3px solid #cbd5e0 !important;
   box-shadow: 2px 0 5px rgba(0,0,0,0.05);
 }
 
-/* Headers */
+/* Ensure the top-left corner header stays above everything */
+thead th.sticky-col {
+  z-index: 30;
+  background-color: #2d3748 !important;
+  color: white;
+}
+
+/* --- HEADERS --- */
 .date-header {
   background: #2d3748;
   color: white;
-  width: 300px; /* 5 columns * 60px */
+  position: sticky;
+  top: 0; /* Keeps date row at the top while scrolling down */
+  z-index: 10;
 }
 
 .sub {
@@ -99,41 +112,28 @@ th, td {
   color: #4a5568;
   font-size: 11px;
   text-transform: uppercase;
+  position: sticky;
+  top: 40px; /* Adjust based on your header height */
+  z-index: 10;
 }
 
-/* Differentiation */
-.day-even { background-color: #f7fafc; }
-.day-odd { background-color: #ffffff; }
-
-.rem-cell {
-  border-right: 3px solid #cbd5e0 !important;
-  font-weight: bold;
-  background-color: #ebf8ff;
-  color: #2b6cb0;
-}
-
-.auto-cell {
-  color: #718096;
-  font-style: italic;
-}
-
-/* Today Highlighting */
-.highlight-today {
-  background-color: #f6e05e !important;
-  color: #000 !important;
-}
-
-.cell-today { background-color: #fffaf0 !important; }
-.cell-today-rem { background-color: #fefcbf !important; }
-
-/* Table Inputs */
+/* --- TABLE INPUTS --- */
 td input[type="number"] {
   width: 100%;
-  border: none !important;
+  border: 1px solid transparent;
   background: transparent;
   text-align: center;
   outline: none;
-  font-size: 13px;
+  font-size: 14px;
+  padding: 4px;
+  transition: all 0.2s;
+}
+
+td input[type="number"]:focus {
+  background: #fff;
+  border-color: #3182ce;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.1);
 }
 
 /* Navbar Styling */
@@ -377,3 +377,104 @@ td input[type="number"] {
   transition: transform 0.2s;
 }
 .add-btn-rich:hover { transform: scale(1.05); background: #2f855a; }
+
+/* --- GLOBAL RESPONSIVE TWEAKS --- */
+.App {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* --- FLEXIBLE NAVBAR --- */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap; /* Allows items to wrap on small screens */
+}
+
+/* --- THE TABLE FIX (Crucial for Mobile) --- */
+/* On PC: Normal Table | On Mobile: Scrollable Area */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Adds horizontal scroll ONLY when needed */
+  -webkit-overflow-scrolling: touch;
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Ensures table doesn't 'squish' too much */
+}
+
+/* --- MOBILE SPECIFIC STYLES (Screen width < 768px) --- */
+@media (max-width: 768px) {
+  .nav-brand {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .nav-content {
+    width: 100%;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+  }
+
+  .nav-search-box {
+    width: 100%;
+  }
+
+  .nav-search-box input {
+    width: 100%;
+  }
+
+  /* Make modal pop-ups take more width on mobile */
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  /* Make the 'Add Item' button big and easy to tap */
+  .add-btn-rich {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* --- TODAY HIGHLIGHT --- */
+
+/* Highlight the Date Header */
+.highlight-today {
+  background-color: #f6e05e !important; /* Bright Yellow */
+  color: #000 !important;
+  font-weight: 800 !important;
+  border-bottom: 3px solid #d69e2e !important;
+}
+
+/* Highlight the entire column cells for today */
+.cell-today {
+  background-color: #fffaf0 !important; /* Very light yellow tint */
+}
+
+/* Highlight the 'Remaining' or 'Balance' cell for today specifically */
+.cell-today-rem {
+  background-color: #fefcbf !important; /* Slightly darker yellow */
+  border-left: 2px solid #ecc94b !important;
+  border-right: 2px solid #ecc94b !important;
+}
+
+/* Ensure sticky columns don't hide the highlight if an item is 'today' */
+tr.highlight-today .sticky-col {
+  background-color: #fff9c4 !important;
+}
+
+/* @media (min-width: 1200px) {
+  .nav-container, .sub-bar-rich, .table-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+} */
