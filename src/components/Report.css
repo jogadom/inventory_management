@@ -1,0 +1,143 @@
+/* --- ANALYTICS REPORT PAGE WRAPPER --- */
+.expert-report {
+  padding: 30px 40px;
+  background-color: #f7fafc;
+  min-height: 100vh;
+}
+
+.report-header-rich {
+  margin-bottom: 30px;
+}
+
+.report-header-rich h2 {
+  color: #1a202c;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.report-header-rich p {
+  color: #718096;
+}
+
+/* --- CHART SECTION STYLING --- */
+.chart-container-rich {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+.chart-container-rich h3 {
+  margin-bottom: 25px;
+  color: #2d3748;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* --- ITEM-WISE BREAKDOWN TABLE --- */
+.item-breakdown-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid #edf2f7;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h3 {
+  font-size: 1.25rem;
+  color: #1a202c;
+  margin: 0;
+  font-weight: 700;
+}
+
+.report-table-wrapper {
+  overflow-x: auto;
+}
+
+.rich-report-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.rich-report-table th {
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+  text-align: left;
+}
+
+.rich-report-table td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #4a5568;
+  vertical-align: middle;
+}
+
+/* Specific Column Styles */
+.text-center {
+  text-align: center !important;
+}
+
+.item-name-cell {
+  font-weight: 600;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-dot {
+  width: 8px;
+  height: 8px;
+  background: #cbd5e0;
+  border-radius: 50%;
+}
+
+.sales-bold {
+  color: #3182ce;
+  font-weight: 700;
+}
+
+/* --- PERFORMANCE STATUS BADGES --- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: #fff5f5;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+}
+
+.status-badge.dormant {
+  background: #f7fafc;
+  color: #718096;
+  border: 1px solid #e2e8f0;
+}
+
+/* Interactive Hover Effect */
+.rich-report-table tr:hover td {
+  background-color: #f8fafc;
+  transition: background 0.2s ease;
+}
